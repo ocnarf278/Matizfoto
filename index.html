@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matiz Fotografía — Sesiones & Bodas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:    #003E51;
+      --amber:   #E07B00;
+      --red:     #F12535;
+      --mint:    #CEE0D7;
+      --white:   #FFFFFF;
+      --off:     #F7F5F2;
+      --text:    #0A1E2A;
+      --muted:   #5C7080;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── LAYOUT ── */
+    .wrap { max-width: 1160px; margin: 0 auto; }
+    .section { padding: 100px 6%; }
+
+    /* ── TYPE ── */
+    .eyebrow {
+      display: block;
+      font-size: .68rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 18px;
+    }
+    h2.display {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--text);
+    }
+    h2.display em { font-style: italic; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+    }
+    .btn-amber { background: var(--amber); color: #fff; }
+    .btn-amber:hover { background: #c56d00; transform: translateY(-1px); }
+    .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.28); }
+    .btn-ghost:hover { border-color: rgba(255,255,255,.6); }
+    .btn-dark  { background: var(--teal); color: #fff; }
+    .btn-dark:hover { background: #004d66; transform: translateY(-1px); }
+    .btn-outline { background: transparent; color: var(--teal); border: 1px solid var(--teal); }
+    .btn-outline:hover { background: var(--teal); color: #fff; }
+
+    /* ════════════════════════════
+       NAV
+    ════════════════════════════ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      height: 66px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 6%;
+      background: rgba(255,255,255,.93);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,62,81,.07);
+      transition: box-shadow .3s;
+    }
+    #nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.07); }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem; font-weight: 600;
+      color: var(--teal); letter-spacing: .02em;
+    }
+    .nav-logo span { color: var(--amber); }
+
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+    }
+    .nav-links a {
+      font-size: .78rem; font-weight: 500;
+      color: var(--muted); letter-spacing: .04em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+
+    #lang-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem; font-weight: 600; letter-spacing: .14em;
+      color: var(--muted); background: none;
+      border: 1px solid rgba(0,62,81,.18);
+      padding: 6px 11px; border-radius: 2px; cursor: pointer;
+      transition: all .2s;
+    }
+    #lang-btn:hover { color: var(--teal); border-color: var(--teal); }
+
+    /* ════════════════════════════
+       HERO
+    ════════════════════════════ */
+    #hero {
+      background: var(--teal);
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      padding: 0 0 0 6%;
+      gap: 0;
+      position: relative; overflow: hidden;
+    }
+    #hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 60%, rgba(224,123,0,.06), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 60px 80px 0;
+    }
+    .hero-eyebrow {
+      display: block;
+      font-size: .68rem; font-weight: 500; letter-spacing: .22em;
+      text-transform: uppercase; color: rgba(255,255,255,.38);
+      margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+      font-weight: 300; font-style: italic;
+      line-height: 1.1; color: #fff;
+      margin-bottom: 28px;
+    }
+    .hero-sub {
+      font-size: .93rem; font-weight: 300;
+      line-height: 1.8; color: rgba(255,255,255,.6);
+      max-width: 400px; margin-bottom: 40px;
+    }
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-note {
+      margin-top: 20px;
+      font-size: .72rem; color: rgba(255,255,255,.28);
+    }
+
+    /* Image frame — full height, edge to edge */
+    .hero-frame {
+      position: relative;
+      overflow: hidden;
+      height: 100%;
+      min-height: 100vh;
+      background: linear-gradient(160deg, #004d66 0%, #002d3c 100%);
+    }
+    .hero-frame img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    /* Amber accent line at bottom */
+    .hero-frame::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      height: 4px; width: 40%;
+      background: var(--amber);
+    }
+    .ph { /* placeholder helper */
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 10px;
+    }
+    .ph svg { opacity: .16; }
+    .ph-label {
+      font-size: .62rem; letter-spacing: .2em;
+      text-transform: uppercase; color: rgba(255,255,255,.18);
+      font-weight: 500;
+    }
+
+    /* Stats badge */
+    .hero-badge {
+      position: absolute; bottom: 28px; right: 28px;
+      background: #fff; border-radius: 3px;
+      padding: 18px 22px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.18);
+    }
+    .hero-badge strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem; font-weight: 600;
+      color: var(--teal); line-height: 1;
+    }
+    .hero-badge span { font-size: .68rem; color: var(--muted); }
+
+    /* ════════════════════════════
+       BENEFICIOS
+    ════════════════════════════ */
+    #beneficios { background: var(--off); }
+
+    .benefits-header { max-width: 580px; margin-bottom: 56px; }
+    .benefits-header p { margin-top: 14px; font-size: .9rem; color: var(--muted); line-height: 1.75; }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: rgba(0,62,81,.09);
+      border: 1px solid rgba(0,62,81,.09);
+    }
+    .benefit {
+      background: var(--off);
+      padding: 42px 38px;
+      transition: background .2s;
+    }
+    .benefit:hover { background: #fff; }
+
+    .b-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 300;
+      color: rgba(0,62,81,.1);
+      line-height: 1; display: block; margin-bottom: 14px;
+    }
+    .benefit h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .benefit p { font-size: .85rem; color: var(--muted); line-height: 1.72; }
+
+    /* ════════════════════════════
+       SERVICIOS
+    ════════════════════════════ */
+    #servicios { background: #fff; }
+
+    .services-header { max-width: 520px; margin-bottom: 52px; }
+    .services-header p { margin-top: 14px; font-size: .9rem; color: var(--muted); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .svc {
+      border: 1px solid rgba(0,62,81,.1);
+      border-radius: 3px;
+      padding: 36px 30px;
+      position: relative; overflow: hidden;
+      transition: transform .25s, box-shadow .25s;
+    }
+    .svc:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,62,81,.09); }
+    .svc::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--amber);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s;
+    }
+    .svc:hover::before { transform: scaleX(1); }
+
+    .svc-tag {
+      display: block;
+      font-size: .62rem; font-weight: 600; letter-spacing: .18em;
+      text-transform: uppercase; color: var(--amber); margin-bottom: 18px;
+    }
+    .svc h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem; font-weight: 600; margin-bottom: 12px;
+    }
+    .svc > p { font-size: .85rem; color: var(--muted); line-height: 1.72; margin-bottom: 22px; }
+
+    .svc-list { list-style: none; margin-bottom: 28px; }
+    .svc-list li {
+      font-size: .78rem; color: var(--muted);
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(0,62,81,.06);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .svc-list li::before {
+      content: '';
+      width: 14px; height: 1px; background: var(--amber); flex-shrink: 0;
+    }
+
+    /* ════════════════════════════
+       GALERÍA
+    ════════════════════════════ */
+    #galeria {
+      background: var(--teal);
+      padding: 100px 6%;
+    }
+    .gallery-top {
+      display: flex; align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px; gap: 24px;
+    }
+    .gallery-top h2.display { color: #fff; }
+    .gallery-note {
+      font-size: .78rem; color: rgba(255,255,255,.3);
+      max-width: 220px; text-align: right; line-height: 1.65;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: 280px 280px;
+      gap: 8px;
+    }
+    .g-item {
+      border-radius: 2px; overflow: hidden;
+      position: relative;
+    }
+    .g-item:first-child { grid-row: span 2; }
+
+    .g-ph {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    /* Subtle tonal variations */
+    .g-item:nth-child(1) .g-ph { background: linear-gradient(155deg, #00506b, #002f41); }
+    .g-item:nth-child(2) .g-ph { background: linear-gradient(155deg, #004d66, #003347); }
+    .g-item:nth-child(3) .g-ph { background: linear-gradient(155deg, #00435a, #002c3c); }
+    .g-item:nth-child(4) .g-ph { background: linear-gradient(155deg, #003d55, #00283a); }
+    .g-item:nth-child(5) .g-ph { background: linear-gradient(155deg, #004860, #003044); }
+
+    .g-inner { text-align: center; }
+    .g-inner svg { width: 28px; height: 28px; opacity: .14; margin: 0 auto 8px; }
+    .g-inner span {
+      display: block; font-size: .58rem;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(255,255,255,.14);
+    }
+
+
+    /* ════════════════════════════
+       QUIÉN SOY
+    ════════════════════════════ */
+    #quien {
+      background: var(--off);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 80px;
+      padding: 100px 6%;
+    }
+
+    .about-frame {
+      aspect-ratio: 3/4; border-radius: 3px; overflow: hidden;
+      background: linear-gradient(160deg, var(--mint), #aecebe);
+      position: relative;
+    }
+    .about-frame::after {
+      content: '';
+      position: absolute;
+      top: 20px; right: -18px; bottom: -18px; left: 20px;
+      border: 1px solid rgba(0,62,81,.13);
+      border-radius: 3px; z-index: -1;
+    }
+
+    .about-text .eyebrow { margin-bottom: 14px; }
+    .about-text h2.display { margin-bottom: 22px; }
+    .about-text p {
+      font-size: .87rem; color: var(--muted);
+      line-height: 1.82; margin-bottom: 18px;
+    }
+    .about-text p strong { color: var(--text); font-weight: 600; }
+    .about-text .btn { margin-top: 8px; }
+
+    /* ════════════════════════════
+       FAQ
+    ════════════════════════════ */
+    #faq { background: #fff; }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 80px; align-items: start;
+    }
+    .faq-sticky { position: sticky; top: 90px; }
+    .faq-sticky h2.display { margin-bottom: 18px; }
+    .faq-sticky p { font-size: .87rem; color: var(--muted); line-height: 1.75; margin-bottom: 28px; }
+
+    .faq-list { display: flex; flex-direction: column; }
+
+    details { border-bottom: 1px solid rgba(0,62,81,.08); }
+    details:first-of-type { border-top: 1px solid rgba(0,62,81,.08); }
+
+    summary {
+      padding: 20px 0;
+      font-size: .88rem; font-weight: 500; color: var(--text);
+      cursor: pointer; list-style: none;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 16px;
+    }
+    summary::-webkit-details-marker { display: none; }
+
+    .faq-icon {
+      width: 22px; height: 22px; border-radius: 50%;
+      border: 1px solid rgba(0,62,81,.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: .75rem; color: var(--muted);
+      transition: all .2s;
+    }
+    details[open] .faq-icon {
+      background: var(--amber); border-color: var(--amber); color: #fff;
+    }
+
+    .faq-answer {
+      padding-bottom: 20px;
+      font-size: .85rem; color: var(--muted); line-height: 1.78;
+    }
+
+    /* ════════════════════════════
+       CTA FINAL
+    ════════════════════════════ */
+    #cta-end {
+      background: var(--teal);
+      padding: 110px 6%;
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    #cta-end::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 110%, rgba(224,123,0,.11), transparent 55%);
+      pointer-events: none;
+    }
+    #cta-end .eyebrow { color: rgba(255,255,255,.35); }
+    .cta-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 300; font-style: italic;
+      color: #fff; max-width: 680px;
+      margin: 0 auto 18px; line-height: 1.15;
+    }
+    .cta-sub { font-size: .87rem; color: rgba(255,255,255,.45); margin-bottom: 40px; }
+    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    /* ════════════════════════════
+       FOOTER
+    ════════════════════════════ */
+    footer {
+      background: #021920;
+      padding: 36px 6%;
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    .f-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600;
+      color: rgba(255,255,255,.55);
+    }
+    .f-logo span { color: var(--amber); }
+    footer p { font-size: .73rem; color: rgba(255,255,255,.2); }
+    .f-links { display: flex; gap: 20px; }
+    .f-links a { font-size: .73rem; color: rgba(255,255,255,.22); transition: color .2s; }
+    .f-links a:hover { color: rgba(255,255,255,.55); }
+
+    /* ════════════════════════════
+       REVEAL ANIMATION
+    ════════════════════════════ */
+    .r {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .r.in { opacity: 1; transform: none; }
+
+    /* ════════════════════════════
+       RESPONSIVE
+    ════════════════════════════ */
+    @media (max-width: 960px) {
+      #hero { grid-template-columns: 1fr; min-height: auto; padding: 0; }
+      .hero-content { padding: 100px 6% 60px; }
+      .hero-frame { aspect-ratio: 3/4; min-height: unset; max-height: unset; height: auto; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+      }
+      .g-item:first-child { grid-row: span 1; }
+      .g-item { height: 200px; }
+      #quien { grid-template-columns: 1fr; }
+      .about-frame { max-width: 400px; margin: 0 auto; }
+      .faq-layout { grid-template-columns: 1fr; gap: 40px; }
+      .faq-sticky { position: static; }
+      .nav-links { display: none; }
+      footer { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 560px) {
+      .section { padding: 72px 5%; }
+      #galeria > div { padding: 72px 5%; }
+      #quien { padding: 72px 5%; gap: 40px; }
+      #cta-end { padding: 72px 5%; }
+      footer { padding: 32px 5%; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .g-item { height: 220px; }
+      .hero-ctas { flex-direction: column; align-items: flex-start; }
+      .hero-ctas .btn { width: 100%; justify-content: center; }
+      .cta-btns { flex-direction: column; align-items: center; }
+      .cta-btns .btn { width: 100%; max-width: 320px; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Matiz <span>Fotografía</span></a>
+  <ul class="nav-links">
+    <li><a href="#beneficios" data-es="Beneficios"   data-en="Benefits">Beneficios</a></li>
+    <li><a href="#servicios"  data-es="Servicios"    data-en="Services">Servicios</a></li>
+    <li><a href="#galeria"    data-es="Galería"      data-en="Gallery">Galería</a></li>
+    <li><a href="#quien"      data-es="Quién soy"    data-en="About">Quién soy</a></li>
+  </ul>
+  <div class="nav-right">
+    <button id="lang-btn">EN</button>
+    <!-- Reemplaza TUNUMERO con tu número de WhatsApp (ej: 5491112345678) -->
+    <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-amber" data-es="Agenda una sesión" data-en="Book a session">Agenda una sesión</a>
+  </div>
+</nav>
+
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="r hero-content">
+    <span class="hero-eyebrow" data-es="Matiz Fotografía · Sesiones & Bodas" data-en="Matiz Photography · Sessions & Weddings">Matiz Fotografía · Sesiones & Bodas</span>
+
+    <h1 class="hero-title"
+        data-es="Fotografío el amor de tu pareja antes de que los años lo conviertan en un recuerdo borroso."
+        data-en="I photograph your love before the years turn it into a blurry memory.">
+      Fotografío el amor de tu pareja antes de que los años lo conviertan en un recuerdo borroso.
+    </h1>
+
+    <p class="hero-sub"
+       data-es="Sesiones y coberturas de boda para parejas que quieren tener algo real que mostrarle a sus hijos — no solo fotos bonitas que nadie vuelve a ver."
+       data-en="Sessions and wedding coverage for couples who want something real to show their children — not just pretty photos no one ever looks at again.">
+      Sesiones y coberturas de boda para parejas que quieren tener algo real que mostrarle a sus hijos — no solo fotos bonitas que nadie vuelve a ver.
+    </p>
+
+    <div class="hero-ctas">
+      <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-amber" data-es="Agenda una sesión →" data-en="Book a session →">Agenda una sesión →</a>
+      <a href="#galeria" class="btn btn-ghost" data-es="Ver galería" data-en="View gallery">Ver galería</a>
+    </div>
+    <p class="hero-note" data-es="Sin compromiso · Respuesta en menos de 24 h" data-en="No commitment · Response in under 24 h">Sin compromiso · Respuesta en menos de 24 h</p>
+  </div>
+
+  <div class="r" style="transition-delay:.15s; position:relative; z-index:1;">
+    <div class="hero-frame">
+      <img src="hero.webp" alt="Matiz Fotografía — Sesiones y Bodas">
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ BENEFICIOS ══ -->
+<section id="beneficios" class="section">
+  <div class="wrap">
+    <div class="benefits-header r">
+      <span class="eyebrow" data-es="Por qué elegirme" data-en="Why choose me">Por qué elegirme</span>
+      <h2 class="display"
+          data-es="No vendo fotos. Vendo la única prueba de que ese momento existió."
+          data-en="I don't sell photos. I sell the only proof that moment ever existed.">
+        No vendo fotos. Vendo la única prueba de que ese momento existió.
+      </h2>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit r">
+        <span class="b-num">01</span>
+        <h3 data-es="Para que no te arrepientas" data-en="So you won't have regrets">Para que no te arrepientas</h3>
+        <p data-es="Hay momentos que no se repiten. Cuando mires estas fotos en 20 años, vas a agradecer haberlas tenido — o vas a desear haberlo hecho." data-en="There are moments that don't repeat. When you look at these photos in 20 years, you'll be grateful you have them — or you'll wish you did.">Hay momentos que no se repiten. Cuando mires estas fotos en 20 años, vas a agradecer haberlas tenido — o vas a desear haberlo hecho.</p>
+      </div>
+      <div class="benefit r" style="transition-delay:.08s">
+        <span class="b-num">02</span>
+        <h3 data-es="Para que tus hijos lo entiendan" data-en="So your children understand">Para que tus hijos lo entiendan</h3>
+        <p data-es="Antes de ser papás, eran dos personas locamente enamoradas. Eso también merece quedar. No como recuerdo tuyo, sino como prueba para ellos." data-en="Before you were parents, you were two people madly in love. That deserves to be preserved. Not as your memory, but as proof for them.">Antes de ser papás, eran dos personas locamente enamoradas. Eso también merece quedar. No como recuerdo tuyo, sino como prueba para ellos.</p>
+      </div>
+      <div class="benefit r" style="transition-delay:.16s">
+        <span class="b-num">03</span>
+        <h3 data-es="Lo que nadie más puede darte" data-en="What no one else can give you">Lo que nadie más puede darte</h3>
+        <p data-es="El momento exacto en que te miró sin que te dieras cuenta. La risa que salió sola. Eso no se recrea ni se compra — o lo capturas, o se pierde." data-en="The exact moment they looked at you without you noticing. The laugh that came out on its own. That can't be recreated or bought — either you capture it, or it's gone.">El momento exacto en que te miró sin que te dieras cuenta. La risa que salió sola. Eso no se recrea ni se compra — o lo capturas, o se pierde.</p>
+      </div>
+      <div class="benefit r" style="transition-delay:.24s">
+        <span class="b-num">04</span>
+        <h3 data-es="Sin sentirte actuando" data-en="Without feeling like you're performing">Sin sentirte actuando</h3>
+        <p data-es="La mayoría de las parejas me dicen que no son fotogénicas. Terminan sorprendiéndose a sí mismas. Porque lo que se ve en las fotos es lo que ya estaba ahí." data-en="Most couples tell me they're not photogenic. They end up surprising themselves. Because what shows in the photos was already there.">La mayoría de las parejas me dicen que no son fotogénicas. Terminan sorprendiéndose a sí mismas. Porque lo que se ve en las fotos es lo que ya estaba ahí.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ SERVICIOS ══ -->
+<section id="servicios" class="section" style="background:#fff">
+  <div class="wrap">
+    <div class="services-header r">
+      <span class="eyebrow" data-es="Lo que hago" data-en="What I do">Lo que hago</span>
+      <h2 class="display"
+          data-es="Cada historia necesita su propio tipo de luz."
+          data-en="Every story needs its own kind of light.">
+        Cada historia necesita su propio tipo de luz.
+      </h2>
+      <p data-es="Elige la sesión que se adapta a tu momento." data-en="Choose the session that fits your moment.">Elige la sesión que se adapta a tu momento.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="svc r">
+        <span class="svc-tag" data-es="Parejas" data-en="Couples">Parejas</span>
+        <h3 data-es="Sesión de Pareja" data-en="Couples Session">Sesión de Pareja</h3>
+        <p data-es="Para los que quieren guardar el amor del día a día antes de que se vuelva rutina. En su ciudad, su campo, su lugar." data-en="For those who want to capture everyday love before it becomes routine. In their city, countryside, their place.">Para los que quieren guardar el amor del día a día antes de que se vuelva rutina. En su ciudad, su campo, su lugar.</p>
+        <ul class="svc-list">
+          <li data-es="2–3 horas de sesión"     data-en="2–3 hour session">2–3 horas de sesión</li>
+          <li data-es="Locación a elegir"        data-en="Location of your choice">Locación a elegir</li>
+          <li data-es="Galería privada online"   data-en="Private online gallery">Galería privada online</li>
+          <li data-es="+50 fotos editadas"       data-en="+50 edited photos">+50 fotos editadas</li>
+        </ul>
+        <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-outline" data-es="Consultar" data-en="Enquire">Consultar</a>
+      </div>
+
+      <div class="svc r" style="transition-delay:.1s">
+        <span class="svc-tag" data-es="Pre-Boda" data-en="Engagement">Pre-Boda</span>
+        <h3 data-es="Engagement / Pre-Boda" data-en="Engagement Session">Engagement / Pre-Boda</h3>
+        <p data-es="El ensayo antes del gran día. Aprendo tu mirada, tu sonrisa. Para que en la boda todo fluya y nada parezca actuado." data-en="The rehearsal before the big day. I learn your look, your smile. So that on the wedding day everything flows naturally.">El ensayo antes del gran día. Aprendo tu mirada, tu sonrisa. Para que en la boda todo fluya y nada parezca actuado.</p>
+        <ul class="svc-list">
+          <li data-es="3–4 horas de sesión"     data-en="3–4 hour session">3–4 horas de sesión</li>
+          <li data-es="Hasta 2 locaciones"      data-en="Up to 2 locations">Hasta 2 locaciones</li>
+          <li data-es="Galería privada online"  data-en="Private online gallery">Galería privada online</li>
+          <li data-es="+80 fotos editadas"      data-en="+80 edited photos">+80 fotos editadas</li>
+        </ul>
+        <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-outline" data-es="Consultar" data-en="Enquire">Consultar</a>
+      </div>
+
+      <div class="svc r" style="transition-delay:.2s">
+        <span class="svc-tag" data-es="Boda" data-en="Wedding">Boda</span>
+        <h3 data-es="Cobertura de Boda" data-en="Wedding Coverage">Cobertura de Boda</h3>
+        <p data-es="Desde los nervios antes del sí hasta el último baile. El día más importante de tu vida, contado sin que pierdas ni un segundo de vivirlo." data-en="From the nerves before the vows to the last dance. The most important day of your life, captured without you missing a second of living it.">Desde los nervios antes del sí hasta el último baile. El día más importante de tu vida, contado sin que pierdas ni un segundo de vivirlo.</p>
+        <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-amber" data-es="Consultar" data-en="Enquire">Consultar</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ GALERÍA ══ -->
+<section id="galeria">
+  <div style="padding:100px 6%;">
+    <div class="gallery-top r">
+      <div>
+        <span class="eyebrow" style="color:rgba(255,255,255,.32)"
+              data-es="Portafolio" data-en="Portfolio">Portafolio</span>
+        <h2 class="display" style="color:#fff"
+            data-es="Algunas de las historias que hemos tenido el honor de contar."
+            data-en="Some of the stories we've had the honor of telling.">
+          Algunas de las historias que hemos tenido el honor de contar.
+        </h2>
+      </div>
+    </div>
+
+    <div class="gallery-grid r">
+      <div class="g-item"><img src="galeria-1.webp" alt=""></div>
+      <div class="g-item"><img src="galeria-2.webp" alt=""></div>
+      <div class="g-item"><img src="galeria-3.webp" alt=""></div>
+      <div class="g-item"><img src="galeria-4.webp" alt=""></div>
+      <div class="g-item"><img src="galeria-5.webp" alt=""></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ QUIÉN SOY ══ -->
+<section id="quien">
+  <div class="about-frame r">
+    <img src="sobre-mi.webp" alt="Fotógrafo Matiz Fotografía">
+  </div>
+
+  <div class="about-text r" style="transition-delay:.15s">
+    <span class="eyebrow" data-es="Quién está detrás del lente" data-en="Who's behind the lens">Quién está detrás del lente</span>
+    <h2 class="display"
+        data-es="No soy el fotógrafo que posa a la gente. Soy el que los acompaña."
+        data-en="I'm not the photographer who poses people. I'm the one who walks alongside them.">
+      No soy el fotógrafo que posa a la gente. Soy el que los acompaña.
+    </h2>
+    <p data-es="Llevo más de 8 años fotografiando parejas que no quieren el álbum genérico — quieren el suyo. El que huele a nervios antes del sí, a risas en el carro, a una mirada que no sabe que la están mirando." data-en="I've spent over 8 years photographing couples who don't want the generic album — they want their own. The one that smells of nerves before the vows, of laughter in the car, of a glance that doesn't know it's being watched.">
+      Llevo más de 8 años fotografiando parejas que no quieren el álbum genérico — quieren el suyo. El que huele a nervios antes del sí, a risas en el carro, a una mirada que no sabe que la están mirando.
+    </p>
+    <p data-es="No tengo premios en la pared. Tengo el WhatsApp lleno de mensajes de parejas diciéndome que sus hijos ya tienen algo real que ver." data-en="I don't have awards on the wall. I have a WhatsApp full of messages from couples telling me their children now have something real to look at.">
+      No tengo premios en la pared. Tengo el WhatsApp lleno de mensajes de parejas diciéndome que sus hijos ya tienen algo real que ver.
+    </p>
+    <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-dark" data-es="Hablemos de tu historia →" data-en="Let's talk about your story →">Hablemos de tu historia →</a>
+  </div>
+</section>
+
+
+<!-- ══ FAQ ══ -->
+<section id="faq" class="section">
+  <div class="wrap">
+    <div class="faq-layout">
+
+      <div class="faq-sticky r">
+        <span class="eyebrow" data-es="Preguntas frecuentes" data-en="FAQ">Preguntas frecuentes</span>
+        <h2 class="display"
+            data-es="Todo lo que quieres saber antes de escribirnos."
+            data-en="Everything you want to know before reaching out.">
+          Todo lo que quieres saber antes de escribirnos.
+        </h2>
+        <p data-es="Si tu pregunta no está aquí, escríbeme. Respondo en menos de 24 h." data-en="If your question isn't here, message me. I respond in under 24 h.">
+          Si tu pregunta no está aquí, escríbeme. Respondo en menos de 24 h.
+        </p>
+        <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-amber" data-es="Escribirme por WhatsApp →" data-en="Message me on WhatsApp →">Escribirme por WhatsApp →</a>
+      </div>
+
+      <div class="faq-list r" style="transition-delay:.1s">
+
+        <details>
+          <summary>
+            <span data-es="¿Cuánto tiempo antes debo reservar?" data-en="How far in advance should I book?">¿Cuánto tiempo antes debo reservar?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <p class="faq-answer" data-es="Para bodas, recomiendo reservar con al menos 6 meses de anticipación. Para sesiones de pareja, 2–4 semanas suele ser suficiente." data-en="For weddings, I recommend booking at least 6 months in advance. For couples sessions, 2–4 weeks is usually enough.">Para bodas, recomiendo reservar con al menos 6 meses de anticipación. Para sesiones de pareja, 2–4 semanas suele ser suficiente.</p>
+        </details>
+
+        <details>
+          <summary>
+            <span data-es="¿Qué pasa si llueve el día de la boda?" data-en="What if it rains on the wedding day?">¿Qué pasa si llueve el día de la boda?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <p class="faq-answer" data-es="La lluvia hace fotos increíbles. Llevo paraguas, busco luces, y las fotos terminan siendo mejores de lo que imaginabas. La naturaleza raramente arruina una buena sesión." data-en="Rain makes incredible photos. I bring an umbrella, find the light, and the photos end up better than you imagined. Nature rarely ruins a good session.">La lluvia hace fotos increíbles. Llevo paraguas, busco luces, y las fotos terminan siendo mejores de lo que imaginabas. La naturaleza raramente arruina una buena sesión.</p>
+        </details>
+
+        <details>
+          <summary>
+            <span data-es="¿En cuánto tiempo recibo mis fotos?" data-en="How long until I receive my photos?">¿En cuánto tiempo recibo mis fotos?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <p class="faq-answer" data-es="Sesiones de pareja: 3–4 semanas. Bodas: máximo 6 semanas. Recibes una galería privada en línea con descarga en alta resolución." data-en="Couples sessions: 3–4 weeks. Weddings: maximum 6 weeks. You receive a private online gallery with high-resolution downloads.">Sesiones de pareja: 3–4 semanas. Bodas: máximo 6 semanas. Recibes una galería privada en línea con descarga en alta resolución.</p>
+        </details>
+
+        <details>
+          <summary>
+            <span data-es="¿Viajan a otras ciudades del Perú?" data-en="Do you travel to other cities in Peru?">¿Viajan a otras ciudades del Perú?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <p class="faq-answer" data-es="Sí. Estoy basado en Huánuco y me desplazo a otras ciudades del país. Los costos de traslado se consultan por separado según el destino. Escríbeme con tu fecha y locación." data-en="Yes. I'm based in Huánuco and travel to other cities across Peru. Travel costs are quoted separately depending on the destination. Message me with your date and location.">Sí. Estoy basado en Huánuco y me desplazo a otras ciudades del país. Los costos de traslado se consultan por separado según el destino. Escríbeme con tu fecha y locación.</p>
+        </details>
+
+        <details>
+          <summary>
+            <span data-es="¿Necesito experiencia frente a una cámara?" data-en="Do I need experience in front of a camera?">¿Necesito experiencia frente a una cámara?</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <p class="faq-answer" data-es="Para nada. La mayoría me dice que no son fotogénicos — y terminan sorprendiéndose. Mi trabajo es hacer que te olvides de que hay una cámara." data-en="Not at all. Most people tell me they're not photogenic — and end up surprising themselves. My job is to make you forget there's a camera.">Para nada. La mayoría me dice que no son fotogénicos — y terminan sorprendiéndose. Mi trabajo es hacer que te olvides de que hay una cámara.</p>
+        </details>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CTA FINAL ══ -->
+<section id="cta-end">
+  <span class="eyebrow" data-es="¿Listo para el siguiente paso?" data-en="Ready for the next step?">¿Listo para el siguiente paso?</span>
+  <h2 class="cta-title r"
+      data-es="No dejes que ese momento se pierda para siempre."
+      data-en="Don't let that moment be lost forever.">
+    No dejes que ese momento se pierda para siempre.
+  </h2>
+  <p class="cta-sub r" data-es="Sin formularios. Solo un mensaje de WhatsApp." data-en="No forms. Just a WhatsApp message.">Sin formularios. Solo un mensaje de WhatsApp.</p>
+  <div class="cta-btns r">
+    <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-amber" data-es="Agenda tu sesión →" data-en="Book your session →">Agenda tu sesión →</a>
+    <a href="#beneficios" class="btn btn-ghost" data-es="Ver más" data-en="Learn more">Ver más</a>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <span class="f-logo">Matiz <span>Fotografía</span></span>
+  <p data-es="© 2026 Matiz Fotografía · Sesiones & Bodas" data-en="© 2026 Matiz Photography · Sessions & Weddings">© 2026 Matiz Fotografía · Sesiones & Bodas</p>
+  <div class="f-links">
+    <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía">WhatsApp</a>
+    <a href="https://instagram.com/matizfoto_" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+
+<script>
+  // ── Nav scroll ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  }, { passive: true });
+
+  // ── Reveal on scroll ──
+  const io = new IntersectionObserver(
+    entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }),
+    { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+  );
+  document.querySelectorAll('.r').forEach(el => io.observe(el));
+
+  // ── FAQ icon ──
+  document.querySelectorAll('details').forEach(d => {
+    d.addEventListener('toggle', () => {
+      const ic = d.querySelector('.faq-icon');
+      if (ic) ic.textContent = d.open ? '−' : '+';
+    });
+  });
+
+  // ── Language toggle ──
+  let lang = 'es';
+  const langBtn = document.getElementById('lang-btn');
+
+  function applyLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    langBtn.textContent = l === 'es' ? 'EN' : 'ES';
+    document.querySelectorAll('[data-es][data-en]').forEach(el => {
+      if (el.children.length === 0) el.textContent = el.dataset[l];
+    });
+    document.title = l === 'es'
+      ? 'Matiz Fotografía — Sesiones & Bodas'
+      : 'Matiz Photography — Sessions & Weddings';
+  }
+
+  langBtn.addEventListener('click', () => applyLang(lang === 'es' ? 'en' : 'es'));
+</script>
+
+</body>
+</html>

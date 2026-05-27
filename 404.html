@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Matiz Fotografía</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --teal:  #003E51;
+      --amber: #E07B00;
+      --mint:  #CEE0D7;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--teal);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 40px 6%;
+      text-align: center;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Subtle background glow */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(224,123,0,.07), transparent 60%);
+      pointer-events: none;
+    }
+
+    .num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(7rem, 20vw, 14rem);
+      font-weight: 300;
+      line-height: 1;
+      color: rgba(255,255,255,.07);
+      letter-spacing: -.02em;
+      user-select: none;
+      margin-bottom: -20px;
+    }
+
+    .icon {
+      width: 48px; height: 48px;
+      margin: 0 auto 24px;
+      opacity: .35;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      max-width: 480px;
+    }
+
+    p {
+      font-size: .88rem;
+      color: rgba(255,255,255,.45);
+      max-width: 360px;
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-decoration: none;
+      transition: all .2s;
+      background: var(--amber);
+      color: #fff;
+    }
+    .btn:hover { background: #c56d00; transform: translateY(-1px); }
+
+    .accent-line {
+      width: 40px; height: 3px;
+      background: var(--amber);
+      margin: 32px auto 0;
+    }
+
+    .logo {
+      position: fixed;
+      top: 28px; left: 6%;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-weight: 600;
+      color: rgba(255,255,255,.5);
+      text-decoration: none;
+    }
+    .logo span { color: var(--amber); }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="logo">Matiz <span>Fotografía</span></a>
+
+  <p class="num">404</p>
+
+  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.2">
+    <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+    <circle cx="12" cy="13" r="4"/>
+    <line x1="4" y1="4" x2="20" y2="20"/>
+  </svg>
+
+  <h1>Esta página no existe — como las fotos que nunca se toman.</h1>
+
+  <p>El enlace que buscas no está aquí. Pero el momento de guardar el tuyo sí puede empezar ahora.</p>
+
+  <a href="index.html" class="btn">Volver al inicio →</a>
+
+  <div class="accent-line"></div>
+
+</body>
+</html>
