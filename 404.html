@@ -4,10 +4,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>404 — Matiz Fotografía</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Heading Now 84';
+      src: url('Heading-Now-84-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'KyivType Sans';
+      src: url('Dmitry Rastvortsev - KyivType Sans Regular2.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'KyivType Sans';
+      src: url('Dmitry Rastvortsev - KyivType Sans Medium2.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --teal:  #003E51;
       --amber: #E07B00;
@@ -17,7 +36,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { height: 100%; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'KyivType Sans', sans-serif;
       background: var(--teal);
       color: #fff;
       display: flex;
@@ -39,7 +58,7 @@
     }
 
     .num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: clamp(7rem, 20vw, 14rem);
       font-weight: 300;
       line-height: 1;
@@ -56,10 +75,9 @@
     }
 
     h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: clamp(1.6rem, 4vw, 2.4rem);
-      font-weight: 300;
-      font-style: italic;
+      font-weight: 400;
       line-height: 1.2;
       margin-bottom: 16px;
       max-width: 480px;
@@ -79,10 +97,10 @@
       gap: 8px;
       padding: 13px 28px;
       border-radius: 2px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'KyivType Sans', sans-serif;
       font-size: .8rem;
-      font-weight: 600;
-      letter-spacing: .04em;
+      font-weight: 500;
+      letter-spacing: .06em;
       text-decoration: none;
       transition: all .2s;
       background: var(--amber);
@@ -99,7 +117,7 @@
     .logo {
       position: fixed;
       top: 28px; left: 6%;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: 1.2rem; font-weight: 600;
       color: rgba(255,255,255,.5);
       text-decoration: none;
@@ -109,7 +127,7 @@
 </head>
 <body>
 
-  <a href="index.html" class="logo">Matiz <span>Fotografía</span></a>
+  <a href="index.html" class="logo"><img src="logo.png" alt="Matiz Fotografía" style="height:30px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.5;"></a>
 
   <p class="num">404</p>
 

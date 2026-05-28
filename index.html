@@ -4,10 +4,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matiz Fotografía — Sesiones & Bodas</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
+    @font-face {
+      font-family: 'Heading Now 84';
+      src: url('Heading-Now-84-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'KyivType Sans';
+      src: url('Dmitry Rastvortsev - KyivType Sans Light2.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'KyivType Sans';
+      src: url('Dmitry Rastvortsev - KyivType Sans Regular2.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'KyivType Sans';
+      src: url('Dmitry Rastvortsev - KyivType Sans Medium2.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'KyivType Sans';
+      src: url('Dmitry Rastvortsev - KyivType Sans Bold-.otf') format('opentype');
+      font-weight: 600 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
     :root {
       --teal:    #003E51;
       --amber:   #E07B00;
@@ -22,7 +55,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'KyivType Sans', sans-serif;
       background: var(--white);
       color: var(--text);
       line-height: 1.6;
@@ -38,21 +71,22 @@
     /* ── TYPE ── */
     .eyebrow {
       display: block;
+      font-family: 'KyivType Sans', sans-serif;
       font-size: .68rem;
-      font-weight: 600;
+      font-weight: 500;
       letter-spacing: .22em;
       text-transform: uppercase;
       color: var(--amber);
       margin-bottom: 18px;
     }
     h2.display {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: clamp(2rem, 3.8vw, 3rem);
       font-weight: 300;
       line-height: 1.15;
       color: var(--text);
     }
-    h2.display em { font-style: italic; }
+    h2.display em { font-style: normal; }
 
     /* ── BUTTONS ── */
     .btn {
@@ -61,10 +95,10 @@
       gap: 8px;
       padding: 13px 26px;
       border-radius: 2px;
-      font-family: 'Inter', sans-serif;
+      font-family: 'KyivType Sans', sans-serif;
       font-size: .8rem;
-      font-weight: 600;
-      letter-spacing: .04em;
+      font-weight: 500;
+      letter-spacing: .06em;
       cursor: pointer;
       border: none;
       transition: all .2s;
@@ -94,7 +128,7 @@
     #nav.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,.07); }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: 1.35rem; font-weight: 600;
       color: var(--teal); letter-spacing: .02em;
     }
@@ -112,15 +146,6 @@
 
     .nav-right { display: flex; align-items: center; gap: 16px; }
 
-    #lang-btn {
-      font-family: 'Inter', sans-serif;
-      font-size: .7rem; font-weight: 600; letter-spacing: .14em;
-      color: var(--muted); background: none;
-      border: 1px solid rgba(0,62,81,.18);
-      padding: 6px 11px; border-radius: 2px; cursor: pointer;
-      transition: all .2s;
-    }
-    #lang-btn:hover { color: var(--teal); border-color: var(--teal); }
 
     /* ════════════════════════════
        HERO
@@ -148,14 +173,15 @@
     }
     .hero-eyebrow {
       display: block;
+      font-family: 'KyivType Sans', sans-serif;
       font-size: .68rem; font-weight: 500; letter-spacing: .22em;
       text-transform: uppercase; color: rgba(255,255,255,.38);
       margin-bottom: 28px;
     }
     .hero-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: clamp(2.2rem, 3.8vw, 3.4rem);
-      font-weight: 300; font-style: italic;
+      font-weight: 400;
       line-height: 1.1; color: #fff;
       margin-bottom: 28px;
     }
@@ -209,7 +235,7 @@
     }
     .hero-badge strong {
       display: block;
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: 2.2rem; font-weight: 600;
       color: var(--teal); line-height: 1;
     }
@@ -238,13 +264,13 @@
     .benefit:hover { background: #fff; }
 
     .b-num {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: 2.8rem; font-weight: 300;
       color: rgba(0,62,81,.1);
       line-height: 1; display: block; margin-bottom: 14px;
     }
     .benefit h3 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: 1.3rem; font-weight: 600;
       margin-bottom: 10px;
     }
@@ -282,11 +308,12 @@
 
     .svc-tag {
       display: block;
-      font-size: .62rem; font-weight: 600; letter-spacing: .18em;
+      font-family: 'KyivType Sans', sans-serif;
+      font-size: .62rem; font-weight: 500; letter-spacing: .18em;
       text-transform: uppercase; color: var(--amber); margin-bottom: 18px;
     }
     .svc h3 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: 1.45rem; font-weight: 600; margin-bottom: 12px;
     }
     .svc > p { font-size: .85rem; color: var(--muted); line-height: 1.72; margin-bottom: 22px; }
@@ -452,9 +479,9 @@
     }
     #cta-end .eyebrow { color: rgba(255,255,255,.35); }
     .cta-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: clamp(2rem, 4vw, 3.4rem);
-      font-weight: 300; font-style: italic;
+      font-weight: 400;
       color: #fff; max-width: 680px;
       margin: 0 auto 18px; line-height: 1.15;
     }
@@ -471,7 +498,7 @@
       justify-content: space-between; gap: 20px;
     }
     .f-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Heading Now 84', serif;
       font-size: 1.2rem; font-weight: 600;
       color: rgba(255,255,255,.55);
     }
@@ -510,6 +537,7 @@
       .faq-layout { grid-template-columns: 1fr; gap: 40px; }
       .faq-sticky { position: static; }
       .nav-links { display: none; }
+      .nav-right .btn { display: none; }
       footer { flex-direction: column; text-align: center; }
     }
     @media (max-width: 560px) {
@@ -531,7 +559,7 @@
 
 <!-- ══ NAV ══ -->
 <nav id="nav">
-  <a href="#" class="nav-logo">Matiz <span>Fotografía</span></a>
+  <a href="#" class="nav-logo"><img src="logo.png" alt="Matiz Fotografía" style="height:38px;width:auto;display:block;"></a>
   <ul class="nav-links">
     <li><a href="#beneficios" data-es="Beneficios"   data-en="Benefits">Beneficios</a></li>
     <li><a href="#servicios"  data-es="Servicios"    data-en="Services">Servicios</a></li>
@@ -539,9 +567,7 @@
     <li><a href="#quien"      data-es="Quién soy"    data-en="About">Quién soy</a></li>
   </ul>
   <div class="nav-right">
-    <button id="lang-btn">EN</button>
-    <!-- Reemplaza TUNUMERO con tu número de WhatsApp (ej: 5491112345678) -->
-    <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-amber" data-es="Agenda una sesión" data-en="Book a session">Agenda una sesión</a>
+    <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-amber">Agenda una sesión</a>
   </div>
 </nav>
 
@@ -636,7 +662,7 @@
         <h3 data-es="Sesión de Pareja" data-en="Couples Session">Sesión de Pareja</h3>
         <p data-es="Para los que quieren guardar el amor del día a día antes de que se vuelva rutina. En su ciudad, su campo, su lugar." data-en="For those who want to capture everyday love before it becomes routine. In their city, countryside, their place.">Para los que quieren guardar el amor del día a día antes de que se vuelva rutina. En su ciudad, su campo, su lugar.</p>
         <ul class="svc-list">
-          <li data-es="2–3 horas de sesión"     data-en="2–3 hour session">2–3 horas de sesión</li>
+          <li data-es="Duración flexible"          data-en="Flexible duration">Duración flexible</li>
           <li data-es="Locación a elegir"        data-en="Location of your choice">Locación a elegir</li>
           <li data-es="Galería privada online"   data-en="Private online gallery">Galería privada online</li>
           <li data-es="+50 fotos editadas"       data-en="+50 edited photos">+50 fotos editadas</li>
@@ -649,7 +675,7 @@
         <h3 data-es="Engagement / Pre-Boda" data-en="Engagement Session">Engagement / Pre-Boda</h3>
         <p data-es="El ensayo antes del gran día. Aprendo tu mirada, tu sonrisa. Para que en la boda todo fluya y nada parezca actuado." data-en="The rehearsal before the big day. I learn your look, your smile. So that on the wedding day everything flows naturally.">El ensayo antes del gran día. Aprendo tu mirada, tu sonrisa. Para que en la boda todo fluya y nada parezca actuado.</p>
         <ul class="svc-list">
-          <li data-es="3–4 horas de sesión"     data-en="3–4 hour session">3–4 horas de sesión</li>
+          <li data-es="Duración flexible"          data-en="Flexible duration">Duración flexible</li>
           <li data-es="Hasta 2 locaciones"      data-en="Up to 2 locations">Hasta 2 locaciones</li>
           <li data-es="Galería privada online"  data-en="Private online gallery">Galería privada online</li>
           <li data-es="+80 fotos editadas"      data-en="+80 edited photos">+80 fotos editadas</li>
@@ -677,9 +703,9 @@
         <span class="eyebrow" style="color:rgba(255,255,255,.32)"
               data-es="Portafolio" data-en="Portfolio">Portafolio</span>
         <h2 class="display" style="color:#fff"
-            data-es="Algunas de las historias que hemos tenido el honor de contar."
-            data-en="Some of the stories we've had the honor of telling.">
-          Algunas de las historias que hemos tenido el honor de contar.
+            data-es="Algunas de las historias que he tenido el honor de contar."
+            data-en="Some of the stories I've had the honor of telling.">
+          Algunas de las historias que he tenido el honor de contar.
         </h2>
       </div>
     </div>
@@ -711,8 +737,8 @@
     <p data-es="Llevo más de 8 años fotografiando parejas que no quieren el álbum genérico — quieren el suyo. El que huele a nervios antes del sí, a risas en el carro, a una mirada que no sabe que la están mirando." data-en="I've spent over 8 years photographing couples who don't want the generic album — they want their own. The one that smells of nerves before the vows, of laughter in the car, of a glance that doesn't know it's being watched.">
       Llevo más de 8 años fotografiando parejas que no quieren el álbum genérico — quieren el suyo. El que huele a nervios antes del sí, a risas en el carro, a una mirada que no sabe que la están mirando.
     </p>
-    <p data-es="No tengo premios en la pared. Tengo el WhatsApp lleno de mensajes de parejas diciéndome que sus hijos ya tienen algo real que ver." data-en="I don't have awards on the wall. I have a WhatsApp full of messages from couples telling me their children now have something real to look at.">
-      No tengo premios en la pared. Tengo el WhatsApp lleno de mensajes de parejas diciéndome que sus hijos ya tienen algo real que ver.
+    <p data-es="Prefiero el sol de las 5 de la tarde al estudio más equipado del mundo. Prefiero que se rían a que posen. Y sí, quiero vivir de esto — porque cuando algo te importa de verdad, se nota en cada foto." data-en="I'd rather have 5pm sun than the best-equipped studio in the world. I'd rather they laugh than pose. And yes, I want to make a living from this — because when something truly matters to you, it shows in every photo.">
+      Prefiero el sol de las 5 de la tarde al estudio más equipado del mundo. Prefiero que se rían a que posen. Y sí, quiero vivir de esto — porque cuando algo te importa de verdad, se nota en cada foto.
     </p>
     <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía" class="btn btn-dark" data-es="Hablemos de tu historia →" data-en="Let's talk about your story →">Hablemos de tu historia →</a>
   </div>
@@ -804,7 +830,7 @@
 
 <!-- ══ FOOTER ══ -->
 <footer>
-  <span class="f-logo">Matiz <span>Fotografía</span></span>
+  <a href="#"><img src="logo.png" alt="Matiz Fotografía" style="height:32px;width:auto;display:block;filter:brightness(0) invert(1);opacity:.6;"></a>
   <p data-es="© 2026 Matiz Fotografía · Sesiones & Bodas" data-en="© 2026 Matiz Photography · Sessions & Weddings">© 2026 Matiz Fotografía · Sesiones & Bodas</p>
   <div class="f-links">
     <a href="https://wa.me/51986556723?text=Hola,%20me%20interesa%20una%20sesión%20con%20Matiz%20Fotografía">WhatsApp</a>
@@ -837,23 +863,6 @@
     });
   });
 
-  // ── Language toggle ──
-  let lang = 'es';
-  const langBtn = document.getElementById('lang-btn');
-
-  function applyLang(l) {
-    lang = l;
-    document.documentElement.lang = l;
-    langBtn.textContent = l === 'es' ? 'EN' : 'ES';
-    document.querySelectorAll('[data-es][data-en]').forEach(el => {
-      if (el.children.length === 0) el.textContent = el.dataset[l];
-    });
-    document.title = l === 'es'
-      ? 'Matiz Fotografía — Sesiones & Bodas'
-      : 'Matiz Photography — Sessions & Weddings';
-  }
-
-  langBtn.addEventListener('click', () => applyLang(lang === 'es' ? 'en' : 'es'));
 </script>
 
 </body>
